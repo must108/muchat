@@ -3,6 +3,8 @@
 import Button from "../_components/Button";
 import { Card } from "@radix-ui/themes";
 import { useState } from "react";
+import { login } from "~/server/lib/auth";
+import toast from "react-hot-toast";
 
 import {
     ImEye,
@@ -11,6 +13,16 @@ import {
 
 export default function Page() {
     const [toggle, setToggle] = useState<boolean>(false);
+
+    const handleSubmit = async (e: FormData) => {
+        const response = await login(e);
+
+        if (response.error) {
+            toast.error(response.error);
+        } else {
+            toast.success("Login success!");
+        }
+    }
 
     return (
         <div className="absolute h-full w-full overflow-scroll
@@ -26,7 +38,7 @@ export default function Page() {
                     >
                         Sign In
                     </h1>
-                    <form>
+                    <form action={handleSubmit}>
                         <div className="mb-5 flex flex-col">
                             <p className="font-bold text-lg">Username</p>
                             <input type="text"

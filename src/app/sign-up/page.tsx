@@ -86,7 +86,7 @@ export default function Page() {
                              />
                         </div>
                         <div className="flex flex-row justify-end">  
-                            <Button content="Sign up" type="submit" />
+                            <Button content="Sign Up" type="submit" />
                         </div>
                     </form>
                 </Card>

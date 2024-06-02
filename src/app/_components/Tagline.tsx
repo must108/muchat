@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Link from "next/link";
 
 export default function Tagline() {
     return (
@@ -16,8 +17,9 @@ export default function Tagline() {
             >
                 Join the conversation.
             </h1>
-            <Button content="Get Started" 
-            style="solid" />
+            <Link href="/sign-up">
+                <Button content="Get Started" />
+            </Link>
         </div>
     );
 }

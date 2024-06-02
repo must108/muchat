@@ -2,13 +2,13 @@
 import {
     Card
 } from "@radix-ui/themes";
-import Button from "./Button";
+import Button, { UnderlineButton } from "./Button";
 import Link from "next/link";
 
 export default function Navbar() {
     return (
         <nav className="fixed z-50 flex w-full select-none p-4">
-            <Card className="w-full" variant="classic">
+            <Card className="w-full pl-4" variant={"surface"}>
                 <div className="flex justify-between">
                     <Link href="/">
                         <h1 className="font-bold
@@ -21,10 +21,10 @@ export default function Navbar() {
                     items-center justify-center gap-2
                     text-white">
                         <Link href="sign-in">
-                            <Button content="Sign In" style="trans" />
+                            <UnderlineButton content="Sign In" />
                         </Link>
                         <Link href="sign-up">
-                            <Button content="Get Started" style="solid" />
+                            <Button content="Get Started" />
                         </Link>
                     </div>
                 </div>

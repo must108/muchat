@@ -13,7 +13,8 @@ export default {
         byzantshade: "#5C1B56",
         bgcolor: "#946590",
         compGreen: "#659469",
-        compGreenShade: "#507654"
+        compGreenShade: "#507654",
+        bgblack: "#001220"
       }
     },
   },

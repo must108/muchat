@@ -22,7 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body>
+      <body className="flex min-h-[100vh] w-full
+      flex-col overflow-scroll">
         <TRPCReactProvider>
           {<Navbar />}
           {children}

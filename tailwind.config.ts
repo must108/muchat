@@ -10,7 +10,10 @@ export default {
       },
       colors: {
         byzantium: "#74226C",
-        byzantshade: "#5C1B56"
+        byzantshade: "#5C1B56",
+        bgcolor: "#946590",
+        compGreen: "#659469",
+        compGreenShade: "#507654"
       }
     },
   },

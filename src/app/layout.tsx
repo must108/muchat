@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { Inter } from 'next/font/google';
 import Navbar from "./_components/Navbar";
 import { TRPCReactProvider } from "~/trpc/react";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   weight: ["400", "700"],
@@ -26,6 +27,7 @@ export default function RootLayout({
       flex-col overflow-scroll">
         <TRPCReactProvider>
           {<Navbar />}
+          {<Toaster />}
           {children}
           </TRPCReactProvider>
       </body>

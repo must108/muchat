@@ -60,7 +60,7 @@ export async function signup(formData: FormData): Promise<ActionResult> {
     if (
         typeof password !== "string" || 
         password.length < 6 ||
-        password.length < 255
+        password.length > 255
     ) {
         return {
             error: "Invalid password",

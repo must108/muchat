@@ -25,3 +25,18 @@ model session {
   userId    String
   user      user     @relation("UserSessions", fields: [userId], references: [id])
 }
+
+model fiveletter {
+  wordid Int     @id @default(autoincrement())
+  words  String? @db.VarChar(10)
+}
+
+model fourletter {
+  wordid Int     @id @default(autoincrement())
+  words  String? @db.VarChar(10)
+}
+
+model sixletter {
+  wordid Int     @id @default(autoincrement())
+  words  String? @db.VarChar(10)
+}

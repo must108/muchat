@@ -1,10 +1,8 @@
 "use client";
 
-import { Card } from "@radix-ui/themes";
 import Button from "../_components/Button";
+import { Card } from "@radix-ui/themes";
 import { useState } from "react";
-import { signup } from "~/server/lib/auth";
-import toast from 'react-hot-toast';
 
 import {
     ImEye,
@@ -14,17 +12,7 @@ import {
 export default function Page() {
     const [toggle, setToggle] = useState<boolean>(false);
 
-    const handleSubmit = async (e: FormData) => {
-        const response = await signup(e);
-
-        if (response.error) {
-            toast.error(response.error);
-        } else {
-            toast.success("Account created successfully!");
-        }
-    }
-
-    return ( 
+    return (
         <div className="absolute h-full w-full overflow-scroll
         bg-bgblack text-white">
             <div className="flex flex-1 h-full items-center
@@ -36,9 +24,9 @@ export default function Page() {
                     <h1 className="font-bold
                     text-2xl mb-8"
                     >
-                        Create An Account
+                        Sign In
                     </h1>
-                    <form action={handleSubmit}>
+                    <form>
                         <div className="mb-5 flex flex-col">
                             <p className="font-bold text-lg">Username</p>
                             <input type="text"
@@ -74,19 +62,8 @@ export default function Page() {
                                 </button>
                             </div>
                         </div>
-                        <div className="mb-5 flex flex-col justify-center">
-                            <p className="font-bold text-lg">Email</p>
-                            <input type="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            className="text-white rounded-md
-                            bg-transparent border border-[#2c2f33]
-                            p-1 outline-none"
-                            required
-                             />
-                        </div>
                         <div className="flex flex-row justify-end">  
-                            <Button content="Sign up" type="submit" />
+                            <Button content="Sign In" type="submit" />
                         </div>
                     </form>
                 </Card>

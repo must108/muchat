@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from 'react';
 
-export default function Button({ content }: 
-    { content: string }) {
+export default function Button({ content, type = "button" }: ButtonProps) {
     return (
         <button className={`rounded-md
         px-4 py-2 font-bold text-white
         bg-compGreen
         hover:bg-compGreenShade
         transition-colors
-        select-none`}>
+        select-none`}
+        type={type}>
             {content}
         </button>
     );
@@ -28,4 +28,9 @@ export function UnderlineButton({ content }:
                 {content}
             </button>
         );
+}
+
+interface ButtonProps {
+    content: string,
+    type?: "button" | "submit" | "reset";
 }

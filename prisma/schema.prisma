@@ -8,21 +8,6 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model fiveletter {
-  wordid Int     @id @default(autoincrement())
-  words  String? @db.VarChar(10)
-}
-
-model fourletter {
-  wordid Int     @id @default(autoincrement())
-  words  String? @db.VarChar(10)
-}
-
-model sixletter {
-  wordid Int     @id @default(autoincrement())
-  words  String? @db.VarChar(10)
-}
-
 model users {
   id          String    @id @db.VarChar
   firstname   String?   @db.VarChar

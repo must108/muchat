@@ -8,6 +8,10 @@ export default {
       fontFamily: {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
       },
+      colors: {
+        byzantium: "#74226C",
+        byzantshade: "#5C1B56"
+      }
     },
   },
   plugins: [],

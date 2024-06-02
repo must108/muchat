@@ -8,13 +8,20 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model users {
-  id          String    @id @db.VarChar
-  firstname   String?   @db.VarChar
-  lastname    String?   @db.VarChar
-  username    String?   @unique @db.VarChar
+model user {
+  id          String    @id(map: "users_pkey") @db.VarChar
+  username    String?   @unique(map: "users_username_key") @db.VarChar
   password    String?   @db.VarChar
-  email       String?   @unique @db.VarChar
-  profile_pic String?   @unique @db.VarChar
+  email       String?   @unique(map: "users_email_key") @db.VarChar
+  profile_pic String?   @unique(map: "users_profile_pic_key") @db.VarChar
   createdat   DateTime? @default(now()) @db.Timestamp(6)
+  sessions    session[] @relation("UserSessions")
+}
+
+model session {
+  id        String   @id
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  userId    String
+  user      user     @relation("UserSessions", fields: [userId], references: [id])
 }

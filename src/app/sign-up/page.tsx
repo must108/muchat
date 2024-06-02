@@ -3,6 +3,8 @@
 import { Card } from "@radix-ui/themes";
 import Button from "../_components/Button";
 import { useState } from "react";
+import { signup } from "~/server/lib/auth";
+import toast from 'react-hot-toast';
 
 import {
     ImEye,
@@ -11,6 +13,14 @@ import {
 
 export default function Page() {
     const [toggle, setToggle] = useState<boolean>(false);
+
+    const handleCreation = async (e: FormData) => {
+        const response = await signup(e);
+
+        if (response.error) {
+            toast.error(response.error);
+        }
+    };
 
     return ( 
         <div className="absolute h-full w-full overflow-scroll
@@ -26,7 +36,7 @@ export default function Page() {
                     >
                         Create An Account
                     </h1>
-                    <form action="">
+                    <form action={handleCreation}>
                         <div className="mb-5 flex flex-col">
                             <p className="font-bold text-lg">Username</p>
                             <input type="text"

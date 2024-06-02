@@ -8,6 +8,7 @@
     "resolveJsonModule": true,
     "moduleDetection": "force",
     "isolatedModules": true,
+    "allowImportingTsExtensions": true,
 
     /* Strictness */
     "strict": true,
@@ -30,13 +31,14 @@
     }
   },
   "include": [
-    ".eslintrc.cjs",
+    ".eslintrc.mjs",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
     "**/*.js",
-    ".next/types/**/*.ts"
-  ],
+    ".next/types/**/*.ts",
+    "prettier.config.mjs", 
+    "postcss.config.mjs", "next.config.mjs"  ],
   "exclude": ["node_modules"]
 }

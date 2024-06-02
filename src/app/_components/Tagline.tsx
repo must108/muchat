@@ -16,7 +16,8 @@ export default function Tagline() {
             >
                 Join the conversation.
             </h1>
-            <Button content="Get Started" />
+            <Button content="Get Started" 
+            style="solid" />
         </div>
     );
 }

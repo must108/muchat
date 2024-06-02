@@ -21,10 +21,10 @@ export default function Navbar() {
                     items-center justify-center gap-2
                     text-white">
                         <Link href="sign-in">
-                            <Button content="Sign In" />
+                            <Button content="Sign In" style="trans" />
                         </Link>
                         <Link href="sign-up">
-                            <Button content="Get Started " />
+                            <Button content="Get Started" style="solid" />
                         </Link>
                     </div>
                 </div>

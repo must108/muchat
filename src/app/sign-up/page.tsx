@@ -1,7 +1,17 @@
+"use client";
+
 import { Card } from "@radix-ui/themes";
 import Button from "../_components/Button";
+import { useState } from "react";
+
+import {
+    ImEye,
+    ImEyeBlocked
+} from 'react-icons/im';
 
 export default function Page() {
+    const [toggle, setToggle] = useState<boolean>(false);
+
     return ( 
         <div className="absolute h-full w-full overflow-scroll
         bg-bgblack text-white">
@@ -30,14 +40,27 @@ export default function Page() {
                         </div>
                         <div className="mb-5 flex flex-col justify-center">
                             <p className="font-bold text-lg">Password</p>
-                            <input type="password"
-                            name="password"
-                            placeholder="Enter a password"
-                            className="text-white rounded-md
-                            bg-transparent border border-[#2c2f33]
-                            p-1 outline-none"
-                            required
-                             />
+                            <div className="flex flex-row items-center
+                            justify-end w-full relative">
+                                <input type={toggle ? "text" : "password"}
+                                name="password"
+                                placeholder="Enter a password"
+                                className="text-white rounded-md
+                                bg-transparent border border-[#2c2f33]
+                                p-1 outline-none w-full"
+                                required
+                                />
+                                <button
+                                type="button"
+                                className="absolute right-4"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setToggle(!toggle)}}
+                                    >
+                                    {!toggle && <ImEyeBlocked />}
+                                    {toggle && <ImEye />}
+                                </button>
+                            </div>
                         </div>
                         <div className="mb-5 flex flex-col justify-center">
                             <p className="font-bold text-lg">Email</p>

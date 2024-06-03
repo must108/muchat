@@ -183,6 +183,62 @@ export async function login(formData: FormData): Promise<ActionResult> {
     return redirect("/dashboard");
 }
 
+export async function signOut(): Promise<ActionResult> {
+    const sessionId = cookies().get(lucia.sessionCookieName)?.value;
+
+    if(sessionId) {
+        await db.session.delete({
+            where: {
+                id: sessionId,
+            },
+        });
+    }
+    cookies().set(lucia.sessionCookieName, "", {
+        expires: new Date(0),
+        secure: process.env.NODE_ENV === "production",
+    });
+
+    return redirect("/");
+}
+
+export const validateRequest = cache(
+    async (): Promise<
+        { user: User; session: Session } | { user: null; session: null }
+    > => {
+        const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
+        if (!sessionId) {
+            return {
+                user: null,
+                session: null,
+            };
+        }
+
+        const result = await lucia.validateSession(sessionId);
+
+        try {
+            if (result.session && result.session.fresh) {
+                const sessionCookie = lucia.createSessionCookie(
+                    result.session.id,
+                );
+                cookies().set(
+                    sessionCookie.name,
+                    sessionCookie.value,
+                    sessionCookie.attributes,
+                );
+            }
+            if (!result.session) {
+                const sessionCookie = lucia.createBlankSessionCookie();
+                cookies().set(
+                    sessionCookie.name,
+                    sessionCookie.value,
+                    sessionCookie.attributes,
+                )
+            }
+        } catch {}
+        return result;
+    },
+);
+
 interface ActionResult {
     error: string,
 }

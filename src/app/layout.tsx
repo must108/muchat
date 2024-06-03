@@ -1,7 +1,6 @@
 import "~/styles/globals.css";
 
 import { Inter } from 'next/font/google';
-import { TRPCReactProvider } from "~/trpc/react";
 import NavbarToggle from "./_components/NavbarToggle";
 import { Toaster } from "react-hot-toast";
 
@@ -27,11 +26,9 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body className="flex min-h-[100vh] w-full
       flex-col overflow-scroll">
-        <TRPCReactProvider>
           {<NavbarToggle />}
           {<Toaster />}
           {children}
-          </TRPCReactProvider>
       </body>
     </html>
   );

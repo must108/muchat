@@ -1,7 +1,17 @@
-import Button from "./_components/Button";
+"use client";
+
+import { useState, useEffect } from 'react';
+import { useAtom } from 'jotai';
+import { navAtom } from '~/server/lib/stores';
 import Tagline from "./_components/Tagline";
 
-export default async function Home() {
+export default function Home() {
+    const [navVisible, setNavVisible] = useAtom(navAtom);
+
+    useEffect(() => {
+        setNavVisible(true);
+    }, []);
+
     return (
         <>
             <div className="absolute h-full w-full

@@ -2,9 +2,11 @@
 
 import { Card } from "@radix-ui/themes";
 import Button from "../_components/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signup } from "~/server/lib/auth";
 import toast from 'react-hot-toast';
+import { useAtom } from "jotai";
+import { navAtom } from "~/server/lib/stores";
 
 import {
     ImEye,
@@ -13,6 +15,11 @@ import {
 
 export default function Page() {
     const [toggle, setToggle] = useState<boolean>(false);
+    const [navVisible, setNavVisible] = useAtom(navAtom);
+
+    useEffect(() => {
+        setNavVisible(true);
+    }, []);
 
     const handleSubmit = async (e: FormData) => {
         const response = await signup(e);

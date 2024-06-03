@@ -2,7 +2,9 @@
 
 import Button from "../_components/Button";
 import { Card } from "@radix-ui/themes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAtom } from "jotai";
+import { navAtom } from "~/server/lib/stores";
 import { login } from "~/server/lib/auth";
 import toast from "react-hot-toast";
 
@@ -13,6 +15,11 @@ import {
 
 export default function Page() {
     const [toggle, setToggle] = useState<boolean>(false);
+    const [navVisible, setNavVisible] = useAtom(navAtom);
+
+    useEffect(() => {
+        setNavVisible(true);
+    }, []);
 
     const handleSubmit = async (e: FormData) => {
         const response = await login(e);

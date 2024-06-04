@@ -17,9 +17,8 @@ export default function AccountButton({ user }: AccountButtonProps) {
                 <div>
                     <Avatar
                     size={"3"}
-                    src={user.profile_pic}
+                    fallback={'a'}
                     radius="full"
-                    fallback={user.username[0]!}
                     className="border-2 border-red-400 p-[2px] 
                     shadow-md hover:cursor-pointer"
                     />

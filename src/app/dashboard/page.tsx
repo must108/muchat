@@ -24,8 +24,8 @@ export default function Page() {
     return (
         <div className="absolute h-full w-full overflow-scroll
         bg-bgblack text-white flex items-center justify-center">
-            <div className="h-[90vh] w-full bg-[#2C2F33]">
-                {/* <AccountButton user={user} /> */}
+            <div className="h-[90vh] w-full bg-[#2C2F33] text-white">
+                {!user ? "" : <AccountButton user={user!} />}
             </div>  
         </div>
     )
